@@ -108,20 +108,20 @@ function updateBall() {
       ball.y = windowHeight - radius;
       ball.vy = -ball.vy * 0.6;
     }
-    //删除已经离开屏幕的小球
-    let cnt = 0;
-    balls.forEach(ball => {
-      //小球的 x 坐标 + 小球的半径 > 0 并且 小球的坐标 - 小球的半径 < 画布半径，说明小球在画布里面。
-      if (ball.x + radius > 0 && ball.x - radius < windowWidth) {
-        //前 cnt 个小球在画布内，后面的都不在。
-        balls[cnt++] = ball;
-      }
-    });
-    //Math.min，如果 cnt > 300，取300，否则取 cnt
-    while (balls.length > Math.min(300, cnt)) {
-      balls.pop();
+  });
+  //删除已经离开屏幕的小球
+  let cnt = 0;
+  balls.forEach(ball => {
+    //小球的 x 坐标 + 小球的半径 > 0 并且 小球的坐标 - 小球的半径 < 画布半径，说明小球在画布里面。
+    if (ball.x + radius > 0 && ball.x - radius < windowWidth) {
+      //前 cnt 个小球在画布内，后面的都不在。
+      balls[cnt++] = ball;
     }
   });
+  //Math.min，如果 cnt > 300，取300，否则取 cnt
+  while (balls.length > Math.min(300, cnt)) {
+    balls.pop();
+  }
 }
 function addBall(x, y, num) {
   digit[num].forEach((element, i) => {
